@@ -140,3 +140,6 @@ h1:hover, h2:hover, h3:hover, h4:hover, h5:hover, h6:hover {
   z-index: 9999;
   pointer-events: none;
 }
+.filter-to-f5f5f4 {
+  filter: brightness(0) saturate(100%) invert(99%) sepia(1%) saturate(335%) hue-rotate(13deg) brightness(104%) contrast(95%);
+}

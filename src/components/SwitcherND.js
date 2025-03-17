@@ -6,7 +6,7 @@ const SwitcherND = () => {
 
   return (
     <div className="flex flex-col items-center justify-center text-black">
-      <div className="text-xs mb-2 tracking-wider">ND PRESET</div>
+      <div className={`text-xs mb-2 tracking-wide ${theme === "light" ? "text-[#000000]" : "text-[#F5F5F4]"}`} >ND PRESET</div>
 
       {/* ND ON Button */}
       <button

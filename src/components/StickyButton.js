@@ -18,6 +18,8 @@ const StickyButton = () => {
   const [isGrayscale, setIsGrayscale] = useState(false); // Schwarz-Weiß-Status
   const { theme } = useTheme();
 
+  console.log("theme: " + theme)
+
   useEffect(() => {
     const checkDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
     setIsDarkMode(checkDarkMode);
@@ -101,11 +103,21 @@ const StickyButton = () => {
               exit={{ y: 30, opacity: 0 }}
               transition={{ type: "spring", stiffness: 80, damping: 10 }}
               className="absolute bottom-[100px] flex space-x-4"
+              
             >
-              <Image src="/icons/vectoscope-rgb.svg" alt="vectoscope-rgb" width={30} height={30} unoptimized />
-              <Image src="/icons/vectoscope.svg" alt="vectoscope" width={30} height={30} unoptimized />
-              <Image src="/icons/falsecolor.svg" alt="falsecolor" width={30} height={30} unoptimized />
-              <Image src="/icons/pick.svg" alt="pick" width={30} height={30} unoptimized />
+              <Image src="/icons/vectoscope-rgb.svg" alt="vectoscope-rgb" width={30} height={30} unoptimized 
+             className={theme === "dark" ? "filter-to-f5f5f4" : ""}
+
+              />
+              <Image src="/icons/vectoscope.svg" alt="vectoscope" width={30} height={30} unoptimized
+              className={theme === "dark" ? "filter-to-f5f5f4" : ""}
+              />
+              <Image src="/icons/falsecolor.svg" alt="falsecolor" width={30} height={30} unoptimized
+              className={theme === "dark" ? "filter-to-f5f5f4" : ""}
+              />
+              <Image src="/icons/pick.svg" alt="pick" width={30} height={30} unoptimized
+              className={theme === "dark" ? "filter-to-f5f5f4" : ""}
+              />
               
               {/* Grayscale Toggle Icon */}
               <Image
@@ -115,10 +127,13 @@ const StickyButton = () => {
                 height={30}
                 unoptimized
                 onClick={toggleGrayscale}
-                className="cursor-pointer"
+              
+                className={theme === "dark" ? "filter-to-f5f5f4 cursor-pointer" : "cursor-pointer"}
               />
 
-              <Image src="/icons/mask.svg" alt="mask" width={30} height={30} unoptimized />
+              <Image src="/icons/mask.svg" alt="mask" width={30} height={30} unoptimized 
+              className={theme === "dark" ? "filter-to-f5f5f4" : ""}
+              />
             </motion.div>
           )}
         </AnimatePresence>
