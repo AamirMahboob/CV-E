@@ -1,0 +1,56 @@
+{
+  "main": [
+    {
+      "name": "Whatsapp",
+      "icon": "whatsapp",
+      "link": "https://wa.me/4915174309863"
+    },
+    {
+      "name": "Signal",
+      "icon": "signal",
+      "link": "https://signal.me/#p/+4915174309863"
+    },
+    {
+      "name": "Instagram",
+      "icon": "insta",
+      "link": "https://www.instagram.com/camposviola.ngo/"
+    },
+    {
+      "name": "LinkedIn",
+      "icon": "linkedin",
+      "link": "https://de.linkedin.com/company/camposviola"
+    },
+    {
+      "name": "Vimeo",
+      "icon": "vimeo",
+      "link": "https://vimeo.com/camposviola"
+    }
+  ],
+  "footer": [
+    {
+      "name": "Whatsapp",
+      "icon": "whatsapp",
+      "link": "https://wa.me/4915174309863"
+    },
+    {
+      "name": "Signal",
+      "icon": "signal",
+      "link": "https://signal.me/#p/+4915174309863"
+    },
+    {
+      "name": "Instagram",
+      "icon": "insta",
+      "link": "https://www.instagram.com/camposviola_official/"
+    },
+    {
+      "name": "LinkedIn",
+      "icon": "linkedin",
+      "link": "https://de.linkedin.com/company/camposviola"
+    },
+    {
+      "name": "Vimeo",
+      "icon": "vimeo",
+      "link": "https://vimeo.com/camposviola"
+    }
+  ]
+}

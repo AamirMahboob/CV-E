@@ -1,0 +1,142 @@
+@import "tailwindcss";
+
+:root {
+  --background: #F5F5F4;
+  --foreground: #303030;
+  --background-dark: #303030;
+  --foreground-dark: #F5F5F4;
+  
+  /* SVGs ändern automatisch die Farbe */
+svg {
+  fill: var(--icon-color); /* Färbt SVG mit Textfarbe */
+  transition: fill 0.5s ease-in-out; /* Weiche Animation */
+}
+
+/* Falls Dark Mode an ist */
+.dark-mode svg {
+  fill: var(--foreground-dark); /* Setzt SVGs auf helle Farbe */
+}
+  /* Adobe Fonts */
+  --font-body: "freight-sans-pro", sans-serif;
+  --font-link: "freight-sans-pro", sans-serif;
+  --font-nav: "darkmode-off-cc";
+  --font-headings: "ltr-ncnd-variable", sans-serif;
+  
+  /* Standard-Transition für sanften Wechsel */
+  transition: background-color 1.5s ease, color 1.5s ease;
+}
+
+/* Dark Mode Klasse */
+.dark-mode {
+  --background: var(--background-dark);
+  --foreground: var(--foreground-dark);
+}
+
+/* Hintergrund & Schriftfarbe setzen */
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body);
+  transition: background 1.5s ease, color 1.5s ease;
+}
+
+/* Falls der User Dark Mode bevorzugt (Browser-Einstellung) */
+@media (prefers-color-scheme: dark) {
+  .dark-mode {
+    --background: var(--background-dark);
+    --foreground: var(--foreground-dark);
+  }
+}
+
+/* Text */
+p {
+  font-family: var(--font-body), sans-serif;
+  font-style: normal;
+}
+
+/* Links */
+a {
+  font-family: var(--font-link);
+  font-weight: 400;
+  font-style: italic;
+  text-decoration: underline;
+}
+
+/* Navigation-Text */
+.nav-text {
+  font-family: var(--font-nav);
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* H1 - H6 */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-headings);
+  font-weight: 250;
+  font-style: normal;
+  transition: font-weight 0.3s ease-in-out;
+}
+
+/* Hover-Effekt für H1-H6 */
+h1:hover, h2:hover, h3:hover, h4:hover, h5:hover, h6:hover {
+  font-weight: 800;
+}
+
+/* Custom Utilities */
+@layer utilities {
+  .scrollbar-hide {
+    scrollbar-width: none; /* Für Firefox */
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none; /* Für Chrome, Safari, Edge */
+  }
+}
+.falseColorLegend {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 10px 15px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: Arial, sans-serif;
+  z-index: 10000;
+}
+
+.legendTitle {
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+.legendRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 3px 0;
+}
+
+.legendColor {
+  width: 20px;
+  height: 10px;
+  border-radius: 4px;
+}
+
+.blue { background: #0000ff; }      /* Tiefschwarz */
+.cyan { background: #00ffff; }      /* Schatten */
+.green { background: #00ff00; }     /* Mitteltöne */
+.yellow { background: #ffff00; }    /* Highlights */
+.orange { background: #ff9600; }    /* Heiße Highlights */
+.red { background: #ff0000; }       /* Überbelichtung */
+
+
+.canvas#falseColorCanvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999;
+  pointer-events: none;
+}
