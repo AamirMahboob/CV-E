@@ -8,7 +8,6 @@ import Menu from "./Menu";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTheme } from "../context/ThemeContext";
 
-
 const StickyButton = () => {
   const pathname = usePathname();
   const [showSwitcher, setShowSwitcher] = useState(false);
@@ -18,10 +17,12 @@ const StickyButton = () => {
   const [isGrayscale, setIsGrayscale] = useState(false); // Schwarz-Weiß-Status
   const { theme } = useTheme();
 
-  console.log("theme: " + theme)
+  console.log("theme: " + theme);
 
   useEffect(() => {
-    const checkDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const checkDarkMode = window.matchMedia(
+      "(prefers-color-scheme: dark)"
+    ).matches;
     setIsDarkMode(checkDarkMode);
   }, []);
 
@@ -41,7 +42,7 @@ const StickyButton = () => {
     setShowMenu(!showMenu);
     setShowIcons(!showIcons);
   };
-  
+
   const toggleGrayscale = () => {
     setIsGrayscale(!isGrayscale);
     document.documentElement.classList.toggle("grayscale");
@@ -56,17 +57,18 @@ const StickyButton = () => {
       {/* Menu */}
       <AnimatePresence>
         {showMenu && (
-          <motion.div
-            initial={{ translateY: "100%" }}
-            animate={{ translateY: "0%" }}
-            exit={{ translateY: "100%" }}
-            transition={{ type: "spring", stiffness: 80, damping: 10 }}
-            className={`fixed bottom-0 left-0 right-0 h-[550px] ${
-              theme === "dark" ? "bg-[var(--background)]" : "bg-white"
-            } text-[var(--foreground)]`}
-          >
-            <Menu closeMenu={closeMenu} />
-          </motion.div>
+         
+         <motion.div
+         initial={{ translateY: "100%" }}
+         animate={{ translateY: "0%" }}
+         exit={{ translateY: "100%" }}
+         transition={{ type: "spring", stiffness: 80, damping: 10 }}
+         className={`fixed bottom-0 left-0 right-0 h-[550px] transition-colors duration-[1500ms] ${
+           theme === "dark" ? "bg-[var(--background)]" : "bg-white"
+         } text-[var(--foreground)]`}
+       >
+         <Menu closeMenu={closeMenu} />
+       </motion.div>
         )}
       </AnimatePresence>
 
@@ -94,31 +96,49 @@ const StickyButton = () => {
           <Image src="/logos/CV.svg" alt="icon" width={60} height={60} />
         </button>
 
-{/* Icon-Reihe über dem CV-Button */}
-<AnimatePresence>
+        {/* Icon-Reihe über dem CV-Button */}
+        <AnimatePresence>
           {showIcons && (
             <motion.div
               initial={{ y: 30, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: 30, opacity: 0 }}
-              transition={{ type: "spring", stiffness: 80, damping: 10 }}
-              className="absolute bottom-[100px] flex space-x-4"
-              
+              transition={{ type: "spring", stiffness: 100, damping: 10 }}
+              className="absolute bottom-[110px] flex space-x-4  justify-center"
             >
-              <Image src="/icons/vectoscope-rgb.svg" alt="vectoscope-rgb" width={30} height={30} unoptimized 
-             className={theme === "dark" ? "filter-to-f5f5f4" : ""}
+              <Image
+                src="/icons/vectoscope-rgb.svg"
+                alt="vectoscope-rgb"
+                width={30}
+                height={30}
+                unoptimized
+                className={theme === "dark" ? "filter-to-f5f5f4" : ""}
+              />
+              <Image
+                src="/icons/vectoscope.svg"
+                alt="vectoscope"
+                width={30}
+                height={30}
+                unoptimized
+                className={theme === "dark" ? "filter-to-f5f5f4" : ""}
+              />
+              <Image
+                src="/icons/falsecolor.svg"
+                alt="falsecolor"
+                width={30}
+                height={30}
+                unoptimized
+                className={theme === "dark" ? "filter-to-f5f5f4" : ""}
+              />
+              <Image
+                src="/icons/pick.svg"
+                alt="pick"
+                width={30}
+                height={30}
+                unoptimized
+                className={theme === "dark" ? "filter-to-f5f5f4" : ""}
+              />
 
-              />
-              <Image src="/icons/vectoscope.svg" alt="vectoscope" width={30} height={30} unoptimized
-              className={theme === "dark" ? "filter-to-f5f5f4" : ""}
-              />
-              <Image src="/icons/falsecolor.svg" alt="falsecolor" width={30} height={30} unoptimized
-              className={theme === "dark" ? "filter-to-f5f5f4" : ""}
-              />
-              <Image src="/icons/pick.svg" alt="pick" width={30} height={30} unoptimized
-              className={theme === "dark" ? "filter-to-f5f5f4" : ""}
-              />
-              
               {/* Grayscale Toggle Icon */}
               <Image
                 src="/icons/blackwith.svg"
@@ -127,17 +147,25 @@ const StickyButton = () => {
                 height={30}
                 unoptimized
                 onClick={toggleGrayscale}
-              
-                className={theme === "dark" ? "filter-to-f5f5f4 cursor-pointer" : "cursor-pointer"}
+                className={
+                  theme === "dark"
+                    ? "filter-to-f5f5f4 cursor-pointer"
+                    : "cursor-pointer"
+                }
               />
 
-              <Image src="/icons/mask.svg" alt="mask" width={30} height={30} unoptimized 
-              className={theme === "dark" ? "filter-to-f5f5f4" : ""}
+              <Image
+                src="/icons/mask.svg"
+                alt="mask"
+                width={30}
+                height={30}
+                unoptimized
+                className={theme === "dark" ? "filter-to-f5f5f4" : ""}
               />
             </motion.div>
           )}
         </AnimatePresence>
-     
+
         <AnimatePresence>
           {showSwitcher && (
             <motion.div

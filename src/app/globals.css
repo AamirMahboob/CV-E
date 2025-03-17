@@ -5,6 +5,7 @@
   --foreground: #303030;
   --background-dark: #303030;
   --foreground-dark: #F5F5F4;
+  transition: all 0.2s ease;
   
   /* SVGs ändern automatisch die Farbe */
 svg {
