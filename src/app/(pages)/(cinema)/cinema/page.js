@@ -6,7 +6,6 @@ export default function Cinema() {
     const pageClass = "theme-cinema";
     const body = document.body;
 
-    // ✅ Falls die Klasse bereits eine andere ist → Ersetzen
     if (!body.classList.contains(pageClass)) {
       body.className = pageClass;
     }

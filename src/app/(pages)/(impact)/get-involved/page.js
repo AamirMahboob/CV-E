@@ -1,9 +1,20 @@
-import React from 'react'
+"use client";
+import React, { useEffect } from "react";
 
-function getinvolved() {
+export default function getinvolved() {
+  useEffect(() => {
+    const pageClass = "theme-impact";
+    const body = document.body;
+
+    if (!body.classList.contains(pageClass)) {
+      body.className = pageClass;
+    }
+  }, []);
+
   return (
-    <div>Get Involved</div>
-  )
+    <div className="w-full h-screen flex items-center justify-center text-4xl text-dark font-bold">
+      <div> Get Involved</div> 
+    </div>
+    
+  );
 }
-
-export default getinvolved;

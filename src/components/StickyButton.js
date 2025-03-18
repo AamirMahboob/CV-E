@@ -50,6 +50,8 @@ const StickyButton = () => {
 
   const closeMenu = () => {
     setShowMenu(false);
+    setShowSwitcher(false); // Hide SwitcherND
+    setShowIcons(false); // Hide Icons
   };
 
   return (
@@ -57,23 +59,26 @@ const StickyButton = () => {
       {/* Menu */}
       <AnimatePresence>
         {showMenu && (
-         
-         <motion.div
-         initial={{ translateY: "100%" }}
-         animate={{ translateY: "0%" }}
-         exit={{ translateY: "100%" }}
-         transition={{ type: "spring", stiffness: 80, damping: 10 }}
-         className={`fixed bottom-0 left-0 right-0 h-[550px] transition-colors duration-[1500ms] ${
-           theme === "dark" ? "bg-[var(--background)]" : "bg-white"
-         } text-[var(--foreground)]`}
-       >
-         <Menu closeMenu={closeMenu} />
-       </motion.div>
+          <motion.div
+            initial={{ translateY: "100%" }}
+            animate={{ translateY: "0%" }}
+            exit={{ translateY: "100%" }}
+            transition={{ type: "spring", stiffness: 80, damping: 10 }}
+            className={`fixed bottom-0 left-0 right-0 h-[550px] ${
+              theme === "dark" ? "bg-[var(--background-dark)]" : "bg-white"
+            } text-[var(--foreground)]`}
+            style={{
+              transition: "background-color 1.5s ease, color 1.5s ease", // Match global transition
+            }}
+          >
+            <Menu closeMenu={closeMenu} />
+          </motion.div>
         )}
       </AnimatePresence>
 
       {/* Main Button */}
-      <div className="fixed bottom-[15%] left-1/2 transform -translate-x-1/2 z-50 flex items-center space-x-16">
+      <div className="fixed bottom-[15%] left-1/2 transform -translate-x-1/2 z-50 flex items-center justify-center">
+        {/* SwitcherND */}
         <AnimatePresence>
           {showSwitcher && (
             <motion.div
@@ -81,13 +86,29 @@ const StickyButton = () => {
               animate={{ x: 0, opacity: 1 }}
               exit={{ x: -80, opacity: 0 }}
               transition={{ type: "spring", stiffness: 80, damping: 10 }}
-              className="absolute right-30"
+              className="absolute right-full mr-10"
             >
               <SwitcherND />
             </motion.div>
           )}
         </AnimatePresence>
 
+        {/* LanguageSwitcher */}
+        <AnimatePresence>
+          {showSwitcher && (
+            <motion.div
+              initial={{ x: 80, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              exit={{ x: 80, opacity: 0 }}
+              transition={{ type: "spring", stiffness: 80, damping: 10 }}
+              className="absolute left-full ml-8"
+            >
+              <LanguageSwitcher />
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        {/* Button */}
         <button
           type="button"
           onClick={handleClick}
@@ -104,7 +125,7 @@ const StickyButton = () => {
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: 30, opacity: 0 }}
               transition={{ type: "spring", stiffness: 100, damping: 10 }}
-              className="absolute bottom-[110px] flex space-x-4  justify-center"
+              className="absolute bottom-[110px] flex space-x-5 justify-center ml-1.5"
             >
               <Image
                 src="/icons/vectoscope-rgb.svg"
@@ -162,20 +183,6 @@ const StickyButton = () => {
                 unoptimized
                 className={theme === "dark" ? "filter-to-f5f5f4" : ""}
               />
-            </motion.div>
-          )}
-        </AnimatePresence>
-
-        <AnimatePresence>
-          {showSwitcher && (
-            <motion.div
-              initial={{ x: 80, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              exit={{ x: 80, opacity: 0 }}
-              transition={{ type: "spring", stiffness: 80, damping: 10 }}
-              className="absolute left-30"
-            >
-              <LanguageSwitcher />
             </motion.div>
           )}
         </AnimatePresence>

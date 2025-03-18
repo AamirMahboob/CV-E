@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { useTheme } from "../context/ThemeContext";
 
 const languages = ["AUTO", "DE", "EN"]; // Reihenfolge: AUTO → DE → EN → DE → AUTO
 const rotationStep = -36; // Jetzt nach RECHTS (positiv!)
@@ -10,6 +11,7 @@ const rotationStep = -36; // Jetzt nach RECHTS (positiv!)
 const LanguageSwitcher = () => {
   const [currentLangIndex, setCurrentLangIndex] = useState(0); // Start: AUTO (0°)
   const router = useRouter();
+  const { theme } = useTheme();
 
   useEffect(() => {
     const storedLang = localStorage.getItem("lang");
@@ -54,7 +56,11 @@ const LanguageSwitcher = () => {
   return (
     <div className="relative flex flex-col items-center">
       {/* Markierungsstrich (zeigt aktuelle Sprache) */}
-      <div className="absolute left-[-14px] top-1/2 -translate-y-1/2 w-4 h-[2px] bg-black"></div>
+      <div
+        className={`absolute left-[-14px] top-1/2 -translate-y-1/2 w-4 h-[2px] ${
+          theme === "dark" ? "bg-[#f5f5f4]" : "bg-black"
+        }`}
+      ></div>
 
       {/* Kamera-Drehrad (dreht in 36°-Schritten, immer sauber) */}
       <motion.button
@@ -68,6 +74,7 @@ const LanguageSwitcher = () => {
           alt="Language Dial"
           width={164}
           height={164}
+          className={theme === "dark" ? "filter-to-f5f5f4" : ""}
         />
       </motion.button>
     </div>
