@@ -4,7 +4,7 @@ const DEFAULT_LOCALE = "en";
 
 export default async function Home({ params }) {
   const paramsData = await params;
-  const locale = paramsData.locale || DEFAULT_LOCALE;
+  const locale = paramsData.locale || DEFAULT_LOCALE; 
 
   return (
     <div className="px-10">
