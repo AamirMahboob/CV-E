@@ -17,8 +17,6 @@ const StickyButton = () => {
   const [isGrayscale, setIsGrayscale] = useState(false); // Schwarz-Weiß-Status
   const { theme } = useTheme();
 
-  console.log("theme: " + theme);
-
   useEffect(() => {
     const checkDarkMode = window.matchMedia(
       "(prefers-color-scheme: dark)"
