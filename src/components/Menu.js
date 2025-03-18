@@ -2,13 +2,8 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 
 function Menu({ closeMenu }) {
-  const pathname = usePathname();
-  const locale = pathname.split("/")[1]; // Extract locale (e.g., 'en' or 'de')
-  const isLocale = ["en", "de"].includes(locale); // Check if it's a valid locale
-
   const menuData = {
     Home: [{ label: "Home", url: "/home" }],
     Cinema: [
@@ -41,9 +36,6 @@ function Menu({ closeMenu }) {
     }
   };
 
-  // Function to generate localized URLs
-  const getLocalizedUrl = (url) => (isLocale ? `/${locale}${url}` : url);
-
   return (
     <div className="px-4">
       <div className="relative overflow-hidden h-full pt-4">
@@ -65,7 +57,7 @@ function Menu({ closeMenu }) {
                     <div className="w-[18.5vw] h-40 bg-black/20 rounded-sm"></div>
                   </div>
                 ) : (
-                  <Link href={getLocalizedUrl(menuData[heading][0].url)} passHref>
+                  <Link href={menuData[heading][0].url} passHref>
                     <div className="cursor-pointer" onClick={closeMenu}>
                       <h3 className="ml-1 font-semibold text-2xl nav-text uppercase">
                         {heading}
@@ -97,10 +89,10 @@ function Menu({ closeMenu }) {
                 Back
               </button>
               {menuData[selectedMenu].map(({ label, url }, index) => (
-                <Link key={index} href={getLocalizedUrl(url)} passHref>
+                <Link key={index} href={url} passHref>
                   <div
                     className="w-[18.5vw] h-40 bg-black/10 rounded-sm uppercase flex items-center justify-center text-lg font-semibold cursor-pointer hover:bg-black/20 transition"
-                    onClick={closeMenu}
+                    onClick={closeMenu} // Close menu on click
                   >
                     {label}
                   </div>
